@@ -19,6 +19,13 @@ import {MatButtonModule} from '@angular/material';
 
 import {MatCardModule} from '@angular/material/card';
 
+import {MatStepperModule} from '@angular/material/stepper';
+
+import { AsyncLocalStorageModule } from 'angular-async-local-storage';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +40,13 @@ import {MatCardModule} from '@angular/material/card';
     MatCardModule,
     HttpModule,
     HttpClientModule,
-    MatButtonModule
+    MatButtonModule,
+    MatStepperModule,
+    AsyncLocalStorageModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   entryComponents: [
     CustomersComponent,

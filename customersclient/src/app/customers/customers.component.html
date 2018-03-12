@@ -1,24 +1,20 @@
-<h1>Customers</h1>
-<mat-table #table [dataSource]="customers">
+<button *ngIf="customers.length == 0" mat-raised-button color="primary" (click)='openDialog(newElement)'>Create Customer</button>
+<div *ngIf="customers.length > 0">
+<h1>Customer</h1>
+<mat-table #table [dataSource]="customers" >
 <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
-
-    <!-- Id Column -->
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef> Id. </mat-header-cell>
-      <mat-cell *matCellDef="let element" (click)='openDialog(element)'> {{element.id}} </mat-cell>
-    </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      <mat-cell *matCellDef="let element" (click)='openDialog(element)'> {{element.name}} </mat-cell>
     </ng-container>
 
     <!-- username Column -->
-    <ng-container matColumnDef="username">
-      <mat-header-cell *matHeaderCellDef> Username </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.username}} </mat-cell>
+    <ng-container matColumnDef="address">
+      <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.address}} </mat-cell>
     </ng-container>
 
     <!-- Email Column -->
@@ -30,5 +26,4 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
-
-<!-- {{customers | json}} -->
+</div>

@@ -1,15 +1,30 @@
 <!-- {{data | json}} -->
 
-<mat-card class="customer-card">
-    <mat-card-header>
-      <mat-card-title>{{data.name}}</mat-card-title>
-      <mat-card-subtitle>{{data.email}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-        <h4>Company: {{data.company.name}}</h4>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>Edit(Not Working)</button>
-      <button mat-button>Delete(Not Working)</button>
-    </mat-card-actions>
-  </mat-card>
+<mat-horizontal-stepper [linear]="true" #stepper="matHorizontalStepper">
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Fill out your name</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" [(ngModel)]="data.name" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Email" formControlName="emailCtrl" [(ngModel)]="data.email" email required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Fill out your address</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Address" [(ngModel)]="data.address" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)='addCus()' md-dialog-close>Submit</button>
+      </div>
+    </form>
+  </mat-step>
+</mat-horizontal-stepper>
