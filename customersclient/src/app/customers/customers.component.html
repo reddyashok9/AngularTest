@@ -1,14 +1,19 @@
-<button *ngIf="customers.length == 0" mat-raised-button color="primary" (click)='openDialog(newElement)'>Create Customer</button>
-<div *ngIf="customers.length > 0">
+<h3>Click on Create customer to add new row</h3>
+<h4>On click of the row you can edit the row</h4>
+<h4>On click on the delete button you can delete the row</h4>
+
+<button mat-raised-button color="primary" (click)='openDialog(newElement, true)'>Create Customer</button>
+<div >
 <h1>Customer</h1>
-<mat-table #table [dataSource]="customers" >
+<mat-table #table [dataSource]="dataSource" >
 <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
+    
     <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-      <mat-cell *matCellDef="let element" (click)='openDialog(element)'> {{element.name}} </mat-cell>
+      <mat-header-cell *matHeaderCellDef > Name </mat-header-cell>
+      <mat-cell *matCellDef="let element" > {{element.name}} </mat-cell>
     </ng-container>
 
     <!-- username Column -->
@@ -20,10 +25,12 @@
     <!-- Email Column -->
     <ng-container matColumnDef="email">
       <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.email}} <button (click)="openDialog(element)" mat-raised-button color="primary">Edit</button><button mat-raised-button color="warn" (click)="deleteCus(element)">Delete</button></mat-cell>
     </ng-container>
+    
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" ></mat-row>
 </mat-table>
 </div>
+

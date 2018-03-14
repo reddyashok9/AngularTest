@@ -26,6 +26,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material';
 
+import { environment } from '../environments/environment';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+import { MatSortModule, MatSort, MatPaginatorModule} from '@angular/material';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,13 +55,19 @@ import {MatInputModule} from '@angular/material';
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
+    AngularFireStorageModule, // imports firebase/storage only needed for storage features
+    MatSortModule,
+    MatPaginatorModule
   ],
   entryComponents: [
     CustomersComponent,
     CustomerDialogComponent
   ],
-  providers: [CustomersService],
+  providers: [CustomersService, MatSort],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

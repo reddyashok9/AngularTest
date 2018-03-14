@@ -4,5 +4,13 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyBddotgnxWCfaIFrKoiYSzD0F5aobq-h3M',
+    authDomain: 'pillprompt.firebaseapp.com',
+    databaseURL: 'https://pillprompt.firebaseio.com',
+    projectId: 'pillprompt',
+    storageBucket: 'pillprompt.appspot.com',
+    messagingSenderId: '87652104788'
+  }
 };
