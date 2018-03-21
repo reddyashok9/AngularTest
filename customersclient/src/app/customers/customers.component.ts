@@ -54,9 +54,10 @@ export class CustomersComponent implements OnInit, AfterViewInit {
 
   openDialog(element, isNew) {
     console.log(element);
-    // element.edit = true;
     if (isNew === true) {
       element = this.newElement;
+    } else {
+      element.edit = true;
     }
 
     const dialogRef = this.dialog.open(CustomerDialogComponent, {
@@ -92,6 +93,7 @@ export class CustomersComponent implements OnInit, AfterViewInit {
     }
 
     addCus() {
+      this.data.isnew = false;
       this.db.collection('customers').add(this.data);
       console.log(this.data);
       this.dialogRef.close();

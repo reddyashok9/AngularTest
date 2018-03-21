@@ -24,7 +24,7 @@
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)='updateCus()' [disabled]="data.address == ''" md-dialog-close *ngIf="data.edit">Update</button>
-        <button mat-button (click)='addCus()' md-dialog-close [disabled]="data.address == ''" *ngIf="data.isNew">Submit</button>
+        <button mat-button (click)='addCus()' md-dialog-close [disabled]="data.address == ''" *ngIf="data.isNew && !data.edit">Submit</button>
       </div>
     </form>
   </mat-step>
